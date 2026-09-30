@@ -1,0 +1,58 @@
+============================================================
+       STEGOVAULT DETAILED SECURITY REPORT
+============================================================
+
+1. IMAGE INFORMATION
+----------------------------------------
+Stego Image: .\test_stego.png
+Resolution: 320 x 320
+Total Pixels: 102400
+
+2. LSB ANALYSIS
+----------------------------------------
+Total LSBs: 102400
+0 bits: 52558
+1 bits: 49842
+Percentage of 0s: 51.33%
+Percentage of 1s: 48.67%
+
+Description: LSB stands for Least Significant Bit. Steganography can modify LSBs to hide information inside image pixels. A distribution close to 50/50 can occur naturally, but encrypted payloads can also produce a highly random-looking LSB sequence.
+
+3. LSB CHANGE ANALYSIS
+----------------------------------------
+Changed LSBs: 49230
+LSB Change Percentage: 48.0762%
+
+Description: This compares the original carrier image with the stego image and counts how many red-channel LSBs were changed. A higher percentage means more pixels were modified. In this StegoVault implementation, the encrypted payload occupies a large portion of the available carrier capacity, so a high modification percentage is expected.
+
+4. CHI-SQUARE ANALYSIS
+----------------------------------------
+Chi-Square Value: 519.69
+Degrees of Freedom: 127
+P-Value: 6.191189e-49
+
+Description: The chi-square test compares the observed distribution of paired pixel intensity values with an expected distribution. The p-value indicates how compatible the observed distribution is with the statistical model used by this test. A very small p-value indicates a statistically significant deviation from that model. However, this result alone does not prove that steganography is present.
+
+5. IMAGE QUALITY ANALYSIS
+----------------------------------------
+MSE: 0.16025390625
+PSNR: 56.08 dB
+
+Description: MSE (Mean Squared Error) measures the average squared difference between the original and stego images. Lower MSE means smaller pixel-level differences. PSNR (Peak Signal-to-Noise Ratio) measures similarity between the two images. A higher PSNR generally indicates greater similarity.
+
+6. STEGOVAULT PAYLOAD ANALYSIS
+----------------------------------------
+Payload Status: DETECTED
+Hidden Filename: test10.pdf
+Encrypted Data Size: 12333 bytes
+
+Description: A valid StegoVault payload structure was detected inside the image. The payload contains metadata describing the hidden filename and the size of the encrypted data.
+
+7. FINAL SECURITY SUMMARY
+----------------------------------------
+StegoVault Payload: DETECTED
+LSB Modification: HIGH
+Image Similarity: EXCELLENT
+Chi-Square Test: STATISTICALLY SIGNIFICANT
+
+IMPORTANT: Statistical steganalysis results are indicators, not absolute proof of hidden information. In this case, the strongest evidence is the successful detection of a valid StegoVault payload.
